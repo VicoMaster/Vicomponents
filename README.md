@@ -1,2 +1,0 @@
-# vicomponents
-Componentes para todos
