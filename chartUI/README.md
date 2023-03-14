@@ -21,6 +21,16 @@ Para usar correctamente este componente se deberá incluir en el html donde se r
 <!-- graph_generator.html -->
 <script src="js/graph_generator.js" type="module"></script>
 ```
+
+y los siguientes estilos CSS:
+```<html>
+<!-- CSS -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+<link href="css/library/bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/library/materialize/materialize.min.css" media="screen,projection" />
+<link rel="stylesheet" href="css/graph_generator.css">
+```
+
 Chart.js, Bootstraps y Materialize ya están incluidas dentro de la carpeta *dist/* en sus respectivas subcarpetas *css/library/* y *js/library/*
 
 
