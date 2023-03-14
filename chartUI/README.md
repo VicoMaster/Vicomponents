@@ -43,7 +43,10 @@ Para crear una nueva instancia del componente se deberá llamar con un ID:
 ```
 ***Este código mejorará en futuras versiones***
 
-## Entendimiento librerias / Clases
+## Entendimiento librerias / Clases / Scripts
 + [Chart.js](https://www.chartjs.org/docs/latest/): Contiene el código externo para el funcionamiento de los gráficos.
 + **Materialize**: Se usa el componente Select.
 + **Bootstraps**: Tooltips de información al pasar el cursor.
++ data.js: Estructura de datos en formato JSON para alimentar el gráfico.
++ MyChart.js: Clase donde se hace la implementación simple de chart.js
++ graph_generator.js: Script principal para la creación de la UI.
