@@ -1,4 +1,4 @@
-# vicomponents
+# ChartUI
 Componente para manipular y visualizar datos de una forma sencilla y rápida usando la librería Chart.js.
 ## Librerías externas
 Se añaden librerías externas: [Chart.js](https://www.chartjs.org/docs/latest/), Bootstraps y Materialize.css para dar estilos y funcionalidad a la UI.
