@@ -44,6 +44,6 @@ Para crear una nueva instancia del componente se deberá llamar con un ID:
 ***Este código mejorará en futuras versiones***
 
 ## Entendimiento librerias / Clases
-[Chart.js](https://www.chartjs.org/docs/latest/): Contiene el código externo para el funcionamiento de los gráficos.
-**Materialize**: Se usa el componente Select.
-**Bootstraps**: Tooltips de información al pasar el cursor.
++ [Chart.js](https://www.chartjs.org/docs/latest/): Contiene el código externo para el funcionamiento de los gráficos.
++ **Materialize**: Se usa el componente Select.
++ **Bootstraps**: Tooltips de información al pasar el cursor.
