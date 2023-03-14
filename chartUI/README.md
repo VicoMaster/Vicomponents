@@ -21,3 +21,4 @@ Para usar correctamente este componente se deberá incluir en el html donde se r
 <!-- graph_generator.html -->
 <script src="js/graph_generator.js" type="module"></script>
 ```
+Bootstraps y Materialize ya están incluidas dentro de la carpeta *dist/* en sus respectivas subcarpetas *css/* y *js/library*
