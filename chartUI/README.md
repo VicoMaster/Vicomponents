@@ -3,9 +3,10 @@ Componente para manipular y visualizar datos de una forma sencilla y rápida usa
 ## Librerías externas
 Se añaden librerías externas de Bootstraps y Materialize.css para dar estilos y funcionalidad a la UI.
 ## Integración
-Para usar correctamente este componente se deberá incluir en el html donde se requiera los siguientes scripts 
-***Esto mejorará con el tiempo para que solo sea necesario llamar 1 solo script***
+Para usar correctamente este componente se deberá incluir en el html donde se requiera los siguientes scripts:
 
+
+***Esto mejorará con el tiempo para que solo sea necesario llamar 1 solo script***
 ```<html>
 <!-- Bootstrap 5.2.3 -->
 <script src="js/library/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
