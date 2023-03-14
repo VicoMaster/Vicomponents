@@ -1,7 +1,7 @@
 # vicomponents
 Componente para manipular y visualizar datos de una forma sencilla y rápida usando la librería Chart.js.
 ## Librerías externas
-Se añaden librerías externas de Bootstraps y Materialize.css para dar estilos y funcionalidad a la UI.
+Se añaden librerías externas: [Chart.js](https://www.chartjs.org/docs/latest/), Bootstraps y Materialize.css para dar estilos y funcionalidad a la UI.
 ## Integración
 Para usar correctamente este componente se deberá incluir en el html donde se requiera los siguientes scripts:
 
@@ -21,4 +21,19 @@ Para usar correctamente este componente se deberá incluir en el html donde se r
 <!-- graph_generator.html -->
 <script src="js/graph_generator.js" type="module"></script>
 ```
-Bootstraps y Materialize ya están incluidas dentro de la carpeta *dist/* en sus respectivas subcarpetas *css/* y *js/library*
+Chart.js, Bootstraps y Materialize ya están incluidas dentro de la carpeta *dist/* en sus respectivas subcarpetas *css/library/* y *js/library/*
+
+
+Para crear una nueva instancia del componente se deberá llamar con un ID:
+
+``` <html>
+<!-- INIT: INJECTION GRAPH -->
+<section id="graphInjection"></section>
+<!-- CLOSE: INJECTION GRAPH -->
+```
+***Este código mejorará en futuras versiones***
+
+## Entendimiento librerias / Clases
+[Chart.js](https://www.chartjs.org/docs/latest/): Contiene el código externo para el funcionamiento de los gráficos.
+**Materialize**: Se usa el componente Select.
+**Bootstraps**: Tooltips de información al pasar el cursor.
