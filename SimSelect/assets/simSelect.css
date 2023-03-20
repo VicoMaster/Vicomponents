@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background-color-dark: rgb(31, 31, 31);
+    --brackground-transparent: transparent;
+    --background-color-white: white;
+    --background-hover-option: #1787c9;
+    --color-border-input: rgb(199, 199, 199);
+    --color-text-light: white;
+    --color-text-normal: rgb(31, 31, 31);
+    --color-text-placeholder: rgb(102, 102, 102);
+}
+
+/* SIMSELECT */
+.simSelect {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    height: 4em;
+    max-height: 4em;
+    width: 100%;
+    position: relative;
+}
+
+/* CABECERA */
+.simSelect-header {
+    background-color: var(--background-color-white);
+    border-radius: .4em;
+    border: 1px solid var(--color-border-input);
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    outline-color: var(--background-hover-option);
+    padding: 0 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.simSelect-input {
+    background-color: var(--background-color-white);
+    border: none;
+    color: var(--color-text-normal);
+    cursor: pointer;
+    font-size: 1.5em;
+    outline: none;
+    width: 100%;
+}
+
+.simSelect-input::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+.simSelect-icon {
+    cursor: pointer;
+    margin-top: 1em;
+    margin-right: .3em;
+}
+
+.simSelect-icon-search {
+    position: absolute;
+    left: 1em;
+    top: .7em;
+    width: max-content;
+    height: 100%;
+    cursor: text;
+}
+
+.simSelect-icon-close {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    right: 1.2em;
+    top: .7em;
+    width: max-content;
+}
+
+.simSelect-icon-close svg {
+    color: var(--background-hover-option);
+    transition: all 100ms ease-in-out;
+}
+
+.simSelect-icon-search svg {
+    transition: all 100ms ease-in-out;
+}
+
+@media (hover:hover) {
+    .simSelect-icon-close:hover svg {
+        color: red;
+        transform: rotateZ(25deg);
+    }
+
+    .simSelect-icon-search:hover svg {
+        transform: scale(1.1);
+    }
+}
+
+/* OPTIONS */
+.simSelect-options {
+    background-color: var(--background-color-white);
+    border-radius: .3em;
+    border: 1px solid var(--color-border-input);
+    max-height: 30em;
+    min-height: min-content;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: .5em;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+.simSelect-filter-header {
+    height: 2em;
+    left: 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin-bottom: 1.2em;
+}
+
+.simSelect-filter {
+    border-radius: .3em;
+    border: 1px solid var(--color-border-input);
+    box-shadow: 0px -10px 0px 0px var(--background-color-white);
+    font-size: 1.5em;
+    height: 2em;
+    outline-color: var(--background-hover-option);
+    padding: 0 .5em;
+    padding-left: 2em;
+    width: 100%;
+}
+
+.simSelect-option-container {
+    height: 100%;
+    width: 100%;
+}
+
+.simSelect__option {
+    cursor: pointer;
+    font-size: 1.5em;
+    height: max-content;
+    line-height: 2em;
+    padding-left: .5em;
+    outline-color: var(--background-hover-option);
+    word-break: break-all;
+}
+
+.simSelect__results {
+    font-size: 1.5em;
+    height: max-content;
+    outline-color: var(--background-hover-option);
+    text-align: center;
+    transform: scale(.8);
+    padding-top: .5rem;
+    pointer-events: none;
+    color: var(--color-text-placeholder);
+}
+
+@media (hover: hover) {
+    .simSelect__option:hover {
+        background-color: var(--background-hover-option);
+        color: var(--color-text-light);
+    }
+}
+
+/* GENERALES */
+.simSelect-hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.border-focus {
+    border: 1px solid var(--background-hover-option);
+}
+
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.noData {
+    font-size: 1.5em;
+    height: 1.8em;
+    line-height: 2em;
+    padding-left: .5em;
+}
