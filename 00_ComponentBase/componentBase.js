@@ -1,4 +1,4 @@
-class componenteBase extends HTMLElement {
+class ComponenteBase extends HTMLElement {
     constructor() {
         super();
         this.data = '';
@@ -56,4 +56,4 @@ class componenteBase extends HTMLElement {
         }
     }
 }
-customElements.define("new-component", componenteBase);
+customElements.define("new-component", ComponenteBase);
