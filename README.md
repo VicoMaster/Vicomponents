@@ -4,8 +4,8 @@
 
 |Component|Description|Comments|
 |---|---|---|
-|**SimSelect**|Un select aesthetic con filtro y generador de grupos|En desarrollo...|
 |**00_ComponentBase**|Implementación en JavaScript para empezar a construir un WebComponent|Versión sin CSS|
+|**SimSelect**|Un select aesthetic con filtro y generador de grupos|En desarrollo...|
 |**chartUI**|Generador de gráficos de barras y lineas con filtros tipo select|Versión sin estándar WebComponent|
 
 
