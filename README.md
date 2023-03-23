@@ -16,7 +16,7 @@ contructor() -> connectedCallback() ->  AttributeChangedCallback()    || Casos r
 -----------------------------------------------------------------------------------------------------------
 
 ```
-El ciclo de vida de un componente está 100% ligado al DOM ya que son estándares del navegador y son parte fundamental del critical renderig path.
+El ciclo de vida de un componente está 100% ligado al DOM ya que son estándares del navegador y son parte fundamental del critical renderig path. Para que todo el código [html,css y js] esté encapsulado se usa **(this.attachShadow({ mode: "open" });)**
 
 * Constructor():
     Se debe extender de la clase (HTMLElement) para poder utilizar los metodos de su ciclo de vida.
@@ -32,6 +32,7 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
     ...
     }
     ```
+**Para saber más sobre ShadowDOM:** [MDN: ShadowDOM](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_shadow_DOM)
 
 * Connected Callback():
     Cuando el elemento que seria nuestro componente ya hace parte del dom y aqui es cuando podemos realizar cierta actividad importante del componente como empezar a renderizar todo el html y css.
