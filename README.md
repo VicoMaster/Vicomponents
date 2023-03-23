@@ -84,8 +84,14 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
     Metodo para construir el css
     :host se usa para meter estilos generales al componente
+
+
     :host(.blue) para meter estilos especificos al componente cuando contiene la clase .blue
+
+
     :host([yellow]) para meter estilo especificos cuando el componente tiene el atributo yellow
+
+
     :host-context(article.card) para meter estilos en el componente cuando está contenido en un article con clase .card [NO USAR]
     ```<javascript>
         getStyles() {
