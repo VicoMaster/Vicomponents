@@ -1,4 +1,4 @@
-# Vicomponents
+# Vicomponents - Componentes Personalizados
 Componentes reutilizables usando la API <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
 
 
