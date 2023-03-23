@@ -1,12 +1,12 @@
 # Vicomponents
-Componentes reutilizables usando la API [Web Components](https://www.webcomponents.org/introduction){:target="_blank"} creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
+Componentes reutilizables usando la API <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
 
 
 Actualmente es soportada por todos los navegadores y busca crear componentes reutilizables, consistentes y con posibilidad de implementar reactividad sin ningún framework o librería. Solo es necesario saber su ciclo de vida y [HTML, CSS y JS].
 
 
 **En el siguiente enlace se pueden descargar componentes reutilizables diseñados por la comunidad:**
-[COMPONENTES](https://www.webcomponents.org/){:target="_blank"}
+<a href="https://www.webcomponents.org/" target="_blank">COMPONENTES</a>
 
 ## CICLO DE VIDA DE UN WEBCOMPONENT
 ```
