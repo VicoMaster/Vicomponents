@@ -92,7 +92,9 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 * getStyles() **NO HACE PARTE DE LA API**:
 
 
-    Metodo para construir el css
+    Metodo para construir el css.
+
+    
     :host se usa para meter estilos generales al componente
 
 
