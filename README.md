@@ -1,5 +1,7 @@
 # Vicomponents - Componentes Personalizados
-> **TIP:** Usa el componente TemplateComponent para crear un WebComponent de forma más rápida
+> **TIP:** Usa el componente TemplateComponent para crear un WebComponent de forma más rápida.
+
+
 Componentes reutilizables usando la API <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
 
 
