@@ -1,4 +1,4 @@
-# Template Component
+# Component Base | Componente Base
 
 
 > Ejecuta **index.html**
