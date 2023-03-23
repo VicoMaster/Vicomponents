@@ -20,7 +20,8 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 ---
 * Constructor():
----
+
+
     Se debe extender de la clase (HTMLElement) para poder utilizar los metodos de su ciclo de vida.
     ```<javascript>
     class componenteBase extends HTMLElement {
@@ -38,7 +39,8 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 ---
 * Connected Callback():
----
+
+
     Cuando el componente ya hace parte del DOM podemos utilizar este metodo para crear cierta lógica especifica.
     ```<javascript>
     connectedCallback() {
@@ -50,12 +52,14 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
     ```
 ---
 * Disconected Callback():
----
+
+
     El momento en que quitamos un elemento lo estamos desconectando del dom, esto es importante ya que en el momento de eliminar estos elementos pueden tener cierta funcionalidad que también tenemos que desconectar para liberar memoria.
     Eliminar cada nodo dentro del padre antes de eliminar el componente con .remove();
 ---
 * AttributeChangedCallback():
----
+
+
     Es la forma en la cual dentro del componente vamos a observar los atributos de nuestro componente. Si tenemos ciertos cambios en los atributos este nos lo va a indicar para poder hacer cambios dentro del componente.
 
     ```<javascript>
@@ -71,11 +75,13 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
     ```
 ---
 * AdoptedCallback()
----
+
+
     Se acciona cuando se ocupa un componente dentro de un iframe por ejemplo. Es mala practica utilizarlo por performance y por mala experiencia para el usuario.
 ---
 * getStyles() **NO HACE PARTE DE LA API**:
----
+
+
     // Metodo para construir el css
     ---
     // :host se usa para meter estilos generales al componente
