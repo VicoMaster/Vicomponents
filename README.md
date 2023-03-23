@@ -2,6 +2,13 @@
 > **TIP:** Usa el componente **TemplateComponent** para crear un WebComponent de forma más rápida.
 
 
+|Component|Description|Comments|
+|---|---|---|
+|**SimSelect**|Un select aesthetic con filtro y generador de grupos|En desarrollo...|
+|**TemplateComponent**|Implementación en JavaScript para empezar a construir un WebComponent|Versión Sin CSS|
+|**chartUI**|Generador de gráficos de barras y lineas con filtros tipo select|Versión sin estándar WebComponent|
+
+
 Componentes reutilizables usando la API <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
 
 
