@@ -1,12 +1,12 @@
 # Vicomponents
-Componentes reutilizables usando la API [Web Components](https://www.webcomponents.org/introduction) creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
+Componentes reutilizables usando la API [Web Components](https://www.webcomponents.org/introduction){:target="_blank"} creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
 
 
 Actualmente es soportada por todos los navegadores y busca crear componentes reutilizables, consistentes y con posibilidad de implementar reactividad sin ningún framework o librería. Solo es necesario saber su ciclo de vida y [HTML, CSS y JS].
 
 
 **En el siguiente enlace se pueden descargar componentes reutilizables diseñados por la comunidad:**
-[COMPONENTES](https://www.webcomponents.org/)
+[COMPONENTES](https://www.webcomponents.org/){:target="_blank"}
 
 ## CICLO DE VIDA DE UN WEBCOMPONENT
 ```
@@ -16,10 +16,22 @@ contructor() -> connectedCallback() ->  AttributeChangedCallback()    || Casos r
 -----------------------------------------------------------------------------------------------------------
 
 ```
-El ciclo de vida de un componente están 100% ligados al dom porque son estándares y esto existe en el navegador son parte fundamental del critical renderig path.
+El ciclo de vida de un componente está 100% ligado al DOM ya que son estándares del navegador y son parte fundamental del critical renderig path.
 
 * Constructor():
-    Cuando se genera el constructor se guarda en memoría lo que tiene la clase (componente). Se debe extender de la clase a usar para manejar el componente.
+    Se debe extender de la clase (HTMLElement) para poder utilizar los metodos de su ciclo de vida.
+    ```<javascript>
+    class componenteBase extends HTMLElement {
+    constructor() {
+        super();
+        this.data = '';
+        this.instanceComponent = undefined;
+        // Inicializamos el modo shadowDOM
+        this.attachShadow({ mode: "open" });
+    }
+    ...
+    }
+    ```
 
 * Connected Callback():
     Cuando el elemento que seria nuestro componente ya hace parte del dom y aqui es cuando podemos realizar cierta actividad importante del componente como empezar a renderizar todo el html y css.
