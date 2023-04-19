@@ -19,7 +19,8 @@ class SimSelect extends HTMLElement {
         this._focusInput = undefined; // Instancia del component para el evento #_hideDropDownKey en SIMSELECT
         this._findTextInput = undefined; // Instancia del component para el evento #_findTextInput en INPUT
         this._zIndex = undefined;  // Guardamos el z-index establecido al componente para el nuevo render()
-        this._placeHolder = 'Escriba una opción | Enter an option';
+        this._placeHolder = 'Escriba una opción | Enter an option';  // Placeholder del input
+        this._title = 'simSelect';  // Titulo del SimSelect
         // Colores
         this._colors = {
             primary: "rgba(11,162,112,1)",
@@ -78,7 +79,7 @@ class SimSelect extends HTMLElement {
         this.attachShadow({ mode: "open" });
     }
     static get observedAttributes() {
-        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "mode", "colors", "placeholder"];
+        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "mode", "colors", "placeholder", "title",];
     }
     // [FUNCTIONS]
     get dataExample() {
@@ -115,6 +116,9 @@ class SimSelect extends HTMLElement {
     get placeHolder() {
         return this._placeHolder;
     }
+    get title() {
+        return this._title;
+    }
     set data(newData) {
         this.setAttribute('data', JSON.stringify(newData));
     }
@@ -133,6 +137,9 @@ class SimSelect extends HTMLElement {
     }
     set placeHolder(placeHolder) {
         this.setAttribute('placeholder', placeHolder);
+    }
+    set title(newTitle) {
+        this.setAttribute('title', newTitle);
     }
     attributeChangedCallback(attrName, oldVal, newVal) {
         if (oldVal !== newVal) {
@@ -173,7 +180,7 @@ class SimSelect extends HTMLElement {
                 this._size.normal = newVal;
             }
             if (attrName === "mode") {
-                if (newVal === "preview" ||  newVal === "loading") {
+                if (newVal === "preview" || newVal === "loading") {
                     this._mode = newVal;
                     this._userMessage = 'Modo Preview | Preview Mode';
                     if (newVal === "loading") {
@@ -210,6 +217,14 @@ class SimSelect extends HTMLElement {
             if (attrName === "placeholder") {
                 if (newVal !== '') {
                     this._placeHolder = newVal;
+                } else {
+                    reRender = false;
+                    console.error('The value is not valid');
+                }
+            }
+            if (attrName === "title") {
+                if (newVal !== '') {
+                    this._title = newVal;
                 } else {
                     reRender = false;
                     console.error('The value is not valid');
@@ -824,7 +839,7 @@ class SimSelect extends HTMLElement {
                 ${this.#_getStyles()}
             </style>
             <section class="simselect-container" data-id="${this._idSimSelect}">
-                <span class="simselect-title cnormal">simSelect</span>
+                <span class="simselect-title cnormal">${this._title}</span>
                 <!-- Desplegable -->
                 <header class="simselect-header">
                     <section class="simselect-selectedOptions">
@@ -991,7 +1006,7 @@ class SimSelect extends HTMLElement {
     }
     connectedCallback() {
         // [Se ejecuta cuando el componente es añadido al DOM, usualmente cuando se carga la página]
-        console.log('SimSelect Connected');
+        console.log('SimSelect Connected - OK');
         if (this._idSimSelect === '') {
             this._idSimSelect = this.#_idGenerator();
         }
