@@ -173,7 +173,7 @@ class SimSelect extends HTMLElement {
                 this._size.normal = newVal;
             }
             if (attrName === "mode") {
-                if (newVal === "preview" || newVal === "data" || newVal === "loading") {
+                if (newVal === "preview" ||  newVal === "loading") {
                     this._mode = newVal;
                     this._userMessage = 'Modo Preview | Preview Mode';
                     if (newVal === "loading") {
@@ -182,6 +182,9 @@ class SimSelect extends HTMLElement {
                         this._options = [];  // Vaciamos las options selected
                         this._userMessage = 'Cargando...';
                     }
+                } else {
+                    reRender = false;
+                    console.error('The value is not valid');
                 }
             }
             if (attrName === "colors") {
