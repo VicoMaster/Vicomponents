@@ -78,7 +78,7 @@ class SimSelect extends HTMLElement {
         this.attachShadow({ mode: "open" });
     }
     static get observedAttributes() {
-        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "mode", "colors"];
+        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "mode", "colors", "placeholder"];
     }
     // [FUNCTIONS]
     get dataExample() {
@@ -112,6 +112,9 @@ class SimSelect extends HTMLElement {
     get colors() {
         return this._colors;
     }
+    get placeHolder() {
+        return this._placeHolder;
+    }
     set data(newData) {
         this.setAttribute('data', JSON.stringify(newData));
     }
@@ -127,6 +130,9 @@ class SimSelect extends HTMLElement {
     }
     set colors(params) {
         this.setAttribute('colors', JSON.stringify(params));
+    }
+    set placeHolder(placeHolder) {
+        this.setAttribute('placeholder', placeHolder);
     }
     attributeChangedCallback(attrName, oldVal, newVal) {
         if (oldVal !== newVal) {
@@ -196,6 +202,14 @@ class SimSelect extends HTMLElement {
                 } else {
                     reRender = false;
                     console.error('The Attribute is not valid');
+                }
+            }
+            if (attrName === "placeholder") {
+                if (newVal !== '') {
+                    this._placeHolder = newVal;
+                } else {
+                    reRender = false;
+                    console.error('The value is not valid');
                 }
             }
             if (reRender) {
