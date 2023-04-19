@@ -6,10 +6,10 @@ class SimSelect extends HTMLElement {
     constructor() {
         super();
         this._loading = true;  // True para modo loading
-        this._mode = 'preview';  // primera carga:'preview' - carga de data: 'data'
+        this._mode = 'loading';  // primera carga:'preview' - carga de data: 'data' - loading Skeleton: 'loading'
         this._options = [];  // Contiene las opciones marcadas. Primera carga:['preview']*3, carga de data: [this._maxSelectedOptions]
         this._data = undefined;  // Data del componente por defecto en blanco para evitar errores
-        this._userMessage = 'Modo Preview';
+        this._userMessage = 'Cargando...';
         this._idSimSelect = '';  // ID unico para cada simSelect
         this._toggleDropDown = undefined  // Instancia del component para el evento #_toggleDropDown en shadowroot
         this._hideDropDown = undefined  // Instancia del component para el evento #_hideDropDown en document
@@ -17,6 +17,7 @@ class SimSelect extends HTMLElement {
         this._deleOptionKey = undefined // Instancia del component para el evento #_deleOptionKey en input
         this._maxSelectedOptions = 4;  // # máximo de options selected para pintar en Head
         this._focusInput = undefined; // Instancia del component para el evento #_hideDropDownKey en SIMSELECT
+        this._findTextInput = undefined; // Instancia del component para el evento #_findTextInput en INPUT
         this._zIndex = undefined;  // Guardamos el z-index establecido al componente para el nuevo render()
         this._placeHolder = 'Escriba una opción | Enter an option';
         // Colores
@@ -46,14 +47,8 @@ class SimSelect extends HTMLElement {
             svgEmpty: `<svg class="cpointer svgEmpty" fill="${this._colors.primary}" height="20" width="20" viewBox="0 0 32 32" stroke="${this._colors.primary}" stroke-width="0.096" transform="matrix(1, 0, 0, 1, 0, 0)"> <g stroke-width="0"></g> <g stroke-linecap="round" stroke-linejoin="round"></g> <g> <path d="M16,32A16,16,0,1,0,0,16,16,16,0,0,0,16,32ZM16,2A14,14,0,1,1,2,16,14,14,0,0,1,16,2Z"></path> </g></svg>`,
             svgFullCircle: `<svg class="cpointer svgFullCircle" fill="${this._colors.primary}" height="20" width="20" viewBox="0 0 512 512" stroke="${this._colors.primary}"stroke-width="6"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="3.072"></g><g> <g> <path d="M474.045,173.813c-4.201,1.371-6.494,5.888-5.123,10.088c7.571,23.199,11.411,47.457,11.411,72.1 c0,62.014-24.149,120.315-68,164.166s-102.153,68-164.167,68s-120.316-24.149-164.167-68S16,318.014,16,256 S40.149,135.684,84,91.833s102.153-68,164.167-68c32.889,0,64.668,6.734,94.455,20.017c28.781,12.834,54.287,31.108,75.81,54.315 c3.004,3.239,8.066,3.431,11.306,0.425c3.24-3.004,3.43-8.065,0.426-11.306c-23-24.799-50.26-44.328-81.024-58.047 C317.287,15.035,283.316,7.833,248.167,7.833c-66.288,0-128.608,25.813-175.48,72.687C25.814,127.392,0,189.712,0,256 c0,66.287,25.814,128.607,72.687,175.479c46.872,46.873,109.192,72.687,175.48,72.687s128.608-25.813,175.48-72.687 c46.873-46.872,72.687-109.192,72.687-175.479c0-26.332-4.105-52.26-12.201-77.064 C482.762,174.736,478.245,172.445,474.045,173.813z"> </path> <path d="M504.969,83.262c-4.532-4.538-10.563-7.037-16.98-7.037s-12.448,2.499-16.978,7.034l-7.161,7.161 c-3.124,3.124-3.124,8.189,0,11.313c3.124,3.123,8.19,3.124,11.314-0.001l7.164-7.164c1.51-1.512,3.52-2.344,5.66-2.344 s4.15,0.832,5.664,2.348c1.514,1.514,2.348,3.524,2.348,5.663s-0.834,4.149-2.348,5.663L217.802,381.75 c-1.51,1.512-3.52,2.344-5.66,2.344s-4.15-0.832-5.664-2.348L98.747,274.015c-1.514-1.514-2.348-3.524-2.348-5.663 c0-2.138,0.834-4.149,2.351-5.667c1.51-1.512,3.52-2.344,5.66-2.344s4.15,0.832,5.664,2.348l96.411,96.411 c1.5,1.5,3.535,2.343,5.657,2.343s4.157-0.843,5.657-2.343l234.849-234.849c3.125-3.125,3.125-8.189,0-11.314 c-3.124-3.123-8.189-3.123-11.313,0L212.142,342.129l-90.75-90.751c-4.533-4.538-10.563-7.037-16.98-7.037 s-12.448,2.499-16.978,7.034c-4.536,4.536-7.034,10.565-7.034,16.977c0,6.412,2.498,12.441,7.034,16.978l107.728,107.728 c4.532,4.538,10.563,7.037,16.98,7.037c6.417,0,12.448-2.499,16.977-7.033l275.847-275.848c4.536-4.536,7.034-10.565,7.034-16.978 S509.502,87.794,504.969,83.262z"> </path> </g></g></svg>`,
         }
-        this.attachShadow({ mode: "open" });
-    }
-    static get observedAttributes() {
-        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "loading",];
-    }
-    // [FUNCTIONS]
-    get dataExample() {
-        const DATAEXAMPLE = [
+        // DATA EXAMPLE
+        this._dataExample = [
             { "group": "Legumbres-Legumes", "option": "Lentejas-Lentils", "value": "Lentejas-Lentils" },
             { "group": "Legumbres-Legumes", "option": "Frijoles negros-Black beans", "value": "Frijoles negros-Black beans" },
             { "group": "Legumbres-Legumes", "option": "Garbanzos-Chickpeas", "value": "Garbanzos-Chickpeas" },
@@ -80,13 +75,27 @@ class SimSelect extends HTMLElement {
             { "group": "Cereales-Cereals", "option": "Trigo-Wheat", "value": "Trigo-Wheat" },
             { "group": "Cereales-Cereals", "option": "Cebada-Barley", "value": "Cebada-Barley" }
         ];
-        return DATAEXAMPLE;
+        this.attachShadow({ mode: "open" });
+    }
+    static get observedAttributes() {
+        return ["data", "primarycolor", "sizeicons", "sizetextnormal", "age", "mode",];
+    }
+    // [FUNCTIONS]
+    get dataExample() {
+        return this._dataExample;
+    }
+    get dataExampleOptions() {
+        // [Retornamos (this._dataExample) sin clave (group)]
+        return this._dataExample.map(obj => {
+            const { group, ...rest } = obj;
+            return rest;
+        });
     }
     get data() {
         return this._data;
     }
-    get loading() {
-        return this._loading;
+    get mode() {
+        return this._mode;
     }
     get selectedOptions() {
         return this._options;
@@ -103,8 +112,8 @@ class SimSelect extends HTMLElement {
     set data(newData) {
         this.setAttribute('data', JSON.stringify(newData));
     }
-    set loading(loading) {
-        this.setAttribute('loading', JSON.stringify(loading));
+    set mode(newMode) {
+        this.setAttribute('mode', newMode);
     }
     set userMessage(message) {
         this._userMessage = message;
@@ -116,14 +125,31 @@ class SimSelect extends HTMLElement {
     attributeChangedCallback(attrName, oldVal, newVal) {
         if (oldVal !== newVal) {
             let atributeCallback = attrName;
-            if (attrName === 'data' && newVal !== '') {
-                this._data = JSON.parse(newVal);
-                this._loading = false;
-                this.setAttribute('loading', 'false');
-                this._mode = 'data';
-                this._options = [];  // Vaciamos las options selected
-                this._userMessage = 'Seleccione una opción | Select an option';
-                atributeCallback = 'data';
+            let reRender = true;
+            if (attrName === 'data') {
+                if (JSON.parse(newVal) !== '') {
+                    if (typeof (JSON.parse(newVal)) === 'object') {
+                        if ((JSON.parse(newVal)[0].group || JSON.parse(newVal)[0].option) && JSON.parse(newVal)[0].value) {
+                            // Falta validar cuando se ingresa una data para grupos pero no tiene options.
+                            // No se hace esta validación por ser muy [Obvio]
+                            this._data = JSON.parse(newVal);
+                            this._loading = false;
+                            this._mode = 'data';
+                            this._options = [];  // Vaciamos las options selected
+                            this._userMessage = 'Seleccione una opción | Select an option';
+                            atributeCallback = 'data';
+                        } else {
+                            reRender = false;
+                            console.error('INVALID FORMAT KEY DATA');
+                        }
+                    } else {
+                        reRender = false;
+                        console.error('INVALID TYPE DATA');
+                    }
+                } else {
+                    reRender = false;
+                    console.error('INVALID NULL DATA');
+                }
             }
             if (attrName === "primarycolor") {
                 this._colors.primary = newVal;
@@ -134,25 +160,22 @@ class SimSelect extends HTMLElement {
             if (attrName === "sizetextnormal") {
                 this._size.normal = newVal;
             }
-            if (attrName === "loading") {
-                if (newVal.toLowerCase() === "true") {
-                    this._loading = Boolean(newVal);
-                    this._data = null;
-                    this._options = [];  // Vaciamos las options selected
-                    this._mode = 'loading';
-                    this._userMessage = 'Cargando...';
-                    this.setAttribute('data', '');
-                }
-                if (newVal.toLowerCase() === "false") {
-                    if (this._data !== null && this._data !== undefined) {
-                        this._loading = !Boolean(newVal);
-                    } else {
-                        console.error('DATA SIMSELECT = NULL or UNDEFINED');
+            if (attrName === "mode") {
+                if (newVal === "preview" || newVal === "data" || newVal === "loading") {
+                    this._mode = newVal;
+                    this._userMessage = 'Modo Preview | Preview Mode';
+                    if (newVal === "loading") {
+                        this._loading = true;
+                        this._data = null;
+                        this._options = [];  // Vaciamos las options selected
+                        this._userMessage = 'Cargando...';
                     }
                 }
             }
-            console.log(`New Render on Simselect:${this._idSimSelect} - Attribute Changed: ${atributeCallback}`);
-            this.#_render();
+            if (reRender) {
+                console.log(`New Render on Simselect:${this._idSimSelect} - Attribute Changed: ${atributeCallback}`);
+                this.#_render();
+            }
         }
     }
     #_focusInput() {
@@ -423,6 +446,78 @@ class SimSelect extends HTMLElement {
         }
         return containDropDown;
     }
+    #_getContainNoGroups(params) {
+        const { loading = '', } = params;
+        let containDropDown = '';
+        if (this._mode === 'preview' || this._mode === 'loading') {
+            console.log('PREVIEW OPTIONS');
+            containDropDown = `
+                <!-- Cada <div> es una option compuesta por un icono <svg> de check/uncheck y un span para texto-->
+                <div class="simselect-option-container">
+                    ${this._icons.svgEmpty}
+                    <span class="simselect-option cpointer ${loading}" data-value="&nbsp;" data-id="${this.#_idGenerator()}">${"&nbsp;".repeat(8)}</span>
+                </div>
+                <div class="simselect-option-container">
+                    ${this._icons.svgEmpty}
+                    <span class="simselect-option cpointer ${loading}" data-value="&nbsp;" data-id="${this.#_idGenerator()}">${"&nbsp;".repeat(8)}</span>
+                </div>
+            `
+        } else {
+            // Si ya no es modo preview genera todo el contenido del Dropdown con los datos [this._data]
+            const FRAGMENT = document.createDocumentFragment();
+            const DIV_TEMPLATE = document.createElement("div");
+            DIV_TEMPLATE.className = "simselect-option-container";
+            DIV_TEMPLATE.innerHTML = `
+                ${this._icons.svgEmpty}
+                <span class="simselect-option cpointer" data-value=""></span>
+            `;
+            this._data.forEach(registry => {
+                const DIV_CONTAINER = DIV_TEMPLATE.cloneNode(true);
+                const SPAN_OPTION = DIV_CONTAINER.querySelector(".simselect-option");
+                SPAN_OPTION.textContent = registry.value;
+                SPAN_OPTION.dataset.value = registry.value;
+                SPAN_OPTION.dataset.id = this.#_idGenerator();
+                FRAGMENT.appendChild(DIV_CONTAINER);
+            });
+            containDropDown = FRAGMENT.outerHTML;
+            // Convertir el FRAGMEN a una cadena de texto
+            const CONTAINER_OPTIONS = Array.from(FRAGMENT.querySelectorAll(".simselect-option-container"));
+            containDropDown = CONTAINER_OPTIONS.map(containerOption => containerOption.outerHTML).join("");
+        }
+        return containDropDown;
+    }
+    #_findTextInput(event) {
+        // [Muestra la caja de opciones (dropDown) al dar click sobre alguna parte del SimSelect]
+        if (event.key !== 'Escape' && event.key !== 'Control' && event.key !== 'Shift' && event.key !== 'Alt') {
+            this.shadowRoot.querySelector('.simselect-collapse').classList.remove('rotate180');
+            this.shadowRoot.querySelector('.simselect-dropdown').classList.remove('hide');
+            // Buscamos la coincidencia
+            let searchResults = [];
+            this.shadowRoot.querySelectorAll('.simselect-option').forEach(option => {
+                const regex = new RegExp(event.target.value, 'i');
+                if (regex.test(option.textContent)) {
+                    option.parentNode.classList.remove('hide-element');
+                    searchResults.push(option);
+                    if (option.parentNode.parentNode.nodeName === 'ARTICLE') {
+                        option.parentNode.parentNode.classList.remove('hide-element');
+                    }
+                } else {
+                    option.parentNode.classList.add('hide-element');
+                }
+            })
+            // Ocultamos grupos sin coincidencias
+            const NUMBER_GROUPS = this.shadowRoot.querySelectorAll('.simselect-group-container').length;
+            this.shadowRoot.querySelectorAll('.simselect-group-container').forEach(group => {
+                group.querySelectorAll('.simselect-group-container .simselect-option-container.hide-element').forEach((optionHide, index) => {
+                    if (NUMBER_GROUPS === (index + 1)) {
+                        optionHide.parentNode.classList.add('hide-element');
+                    }
+                });
+            });
+            // Mostramos resultados
+            this.shadowRoot.querySelector('.simselect-usermessage').textContent = `Se encontraron: ${searchResults.length} resultados`;;
+        }
+    }
     #_getStyles() {
         const ZINDEXNOW = numberComponents;  // Controla el Z-index de los simselects con respecto a otros SimSelects
         if (this._zIndex === undefined) {
@@ -628,6 +723,11 @@ class SimSelect extends HTMLElement {
                 opacity: 0;
                 visibility: hidden;
             }
+            .hide-element {
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+            }
             .bye {
                 animation: bye 0.4s linear both
             }
@@ -650,7 +750,32 @@ class SimSelect extends HTMLElement {
         if (!this._loading) {
             loading = '';
         }
-        const CONTAIN_DROPDOWN = this.#_getContainDropdown({ loading });
+        // Identificamos si la data contiene grupos o solo options
+        let containDropdown = undefined;
+        let formatData = undefined;
+        if (this._data !== undefined && this._data !== null) {
+            formatData = (this._data[0].group) ? true : false;
+        } else {
+            formatData = (this._mode === 'preview' || this._mode === 'loading' ? true : false);
+        }
+        // Creamos el contenido dependiendo del tipo de Data
+        if (formatData) {
+            if (this._mode === 'preview') {
+                console.warn('Simselect - Preview mode');
+            }
+            if (this._mode === 'loading') {
+                console.warn('Simselect - Loading mode');
+            }
+            if (this._mode === 'data') {
+                console.warn('Group Format');
+            }
+            // Crea contenido para grupos/options
+            containDropdown = this.#_getContainDropdown({ loading });
+        } else {
+            console.warn('Options Format');
+            // Crea contenido para options sin grupos
+            containDropdown = this.#_getContainNoGroups({ loading });
+        }
         return `
             <style>
                 ${this.#_getStyles()}
@@ -667,7 +792,7 @@ class SimSelect extends HTMLElement {
                 <!-- OPTIONS SECTION -->
                 <section class="simselect-dropdown hide">
                     <section class="simselect-maxoptions">
-                        ${CONTAIN_DROPDOWN}
+                        ${containDropdown}
                     </section>
                     <!-- Footer -->
                     <footer class="simselect-footer">
@@ -692,6 +817,7 @@ class SimSelect extends HTMLElement {
         this._hideDropDownKey = null;
         this._deleOptionKey = null;
         this._focusInput = null;
+        this._findTextInput = null;
         // Eliminamos los eventos click
         INSTANCE_SIMSELECT[0].eventosclick.forEach(eventoClick => {
             eventoClick.elemento.removeEventListener('click', eventoClick.evento);
@@ -758,13 +884,14 @@ class SimSelect extends HTMLElement {
             element.addEventListener('click', this.#_cleanSelectedOption.bind(this));
             INSTANCE_SIMSELECT[0].eventosclick.push({ elemento: element, evento: this.#_cleanSelectedOption.bind(this) });
         });
-        // Evento para mostrar/ocultar dropdown
+        // Atamos las instancias a la clase para el manejador de eventos.
         if (this._toggleDropDown === undefined) {
             this._toggleDropDown = this.#_toggleDropDown.bind(this);
             this._hideDropDown = this.#_hideDropDown.bind(this);
             this._hideDropDownKey = this.#_hideDropDownKey.bind(this);
             this._deleOptionKey = this.#_deleteLastOptionSelected.bind(this);
             this._focusInput = this.#_focusInput.bind(this);
+            this._findTextInput = this.#_findTextInput.bind(this);
         } else {
             // Eliminamos los eventos para ser refrescados
             this.#_removeAllEvents();
@@ -773,8 +900,9 @@ class SimSelect extends HTMLElement {
             this._hideDropDownKey = this.#_hideDropDownKey.bind(this);
             this._deleOptionKey = this.#_deleteLastOptionSelected.bind(this);
             this._focusInput = this.#_focusInput.bind(this);
+            this._findTextInput = this.#_findTextInput.bind(this);
         }
-
+        // Evento para mostrar/ocultar dropdown
         this.shadowRoot.querySelector('.simselect-collapse').addEventListener('click', this._toggleDropDown);
         INSTANCE_SIMSELECT[0].eventosclick.push({ elemento: this.shadowRoot.querySelector('.simselect-collapse'), evento: this._toggleDropDown });
         this.shadowRoot.querySelector('.simselect-input').addEventListener('click', this._toggleDropDown);
@@ -797,7 +925,10 @@ class SimSelect extends HTMLElement {
         // Agregamos evento focus al SimSelect
         this.addEventListener('click', this._focusInput);
         INSTANCE_SIMSELECT[0].eventosclick.push({ elemento: this, evento: this._focusInput });
-        // Creamos las options via Scripts
+        // Agregar evento KEY(findTExt) al input
+        this.shadowRoot.querySelector('.simselect-input').addEventListener('keyup', this._findTextInput);
+        INSTANCE_SIMSELECT[0].eventoskeys.push({ elemento: this.shadowRoot.querySelector('.simselect-input'), evento: this._findTextInput });
+        // Creamos las SelectedOptions via Scripts
         this.#_createFirstSelectedOptions();
     }
     #_render() {
