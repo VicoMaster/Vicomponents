@@ -33,7 +33,7 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 
     Se debe extender de la clase (HTMLElement) para poder utilizar los metodos de su ciclo de vida.
-    ```<javascript>
+    ```javascript
     class componenteBase extends HTMLElement {
     constructor() {
         super();
@@ -52,7 +52,7 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 
     Cuando el componente ya hace parte del DOM podemos utilizar este metodo para crear cierta lógica especifica.
-    ```<javascript>
+    ```javascript
     connectedCallback() {
         if (this.data === '') {
             // Si el elemento no contiene parametros se manda a renderizar de igual manera
@@ -72,7 +72,7 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
     Es la forma en la cual dentro del componente vamos a observar los atributos de nuestro componente. Si tenemos ciertos cambios en los atributos este nos lo va a indicar para poder hacer cambios dentro del componente.
 
-    ```<javascript>
+    ```javascript
     // Si existen cambios en los atributos se acciona este metodo
     attributeChangedCallback(attrName, oldVal, newVal) {
         if (oldVal !== newVal) {
@@ -105,7 +105,7 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 
     :host-context(article.card) para meter estilos en el componente cuando está contenido en un article con clase .card [NO USAR]
-    ```<javascript>
+    ```javascript
         getStyles() {
         return `
         <style>
