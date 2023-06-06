@@ -3,7 +3,7 @@
 |Function|Description|
 |----------------|----------------|
 |Constructor:| Inicializa las variables que guardaran los datos de instancia de la clase. Se debe especificar attachShadow({ mode: "open" }) para permitir modificaciones con JS del component|
-|static observedAttributes:|Observador de atributos del componente. Se deben especificar cada uno de los atributos para hacer seguimiento si existe un cambio|
+|static observedAttributes:|[Obligatorio] Es parte de la API. Es un observador de atributos del componente. Se deben especificar cada uno de los atributos para hacer seguimiento si existe un cambio|
 
 Devuelve un array de los nombres de los atributos observados por el componente.
 get data():
