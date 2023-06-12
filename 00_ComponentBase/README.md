@@ -12,13 +12,10 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 |set data(newData):|Modifica el atributo "data" del componente. Con esta actualización se activa el metodo attributeChangedCallback()|
 |set mode(newMode):|Modifica el atributo "mode" del componente. Con esta actualización se activa el metodo attributeChangedCallback()|
 |attributeChangedCallback(attrName, oldVal, newVal):|Cada vez que se actualice alguno de los atributos en seguimiento se ejecuta este metodo|
-|idGenerator():| Retorna un id de 10 caracteres de longitud compuesto aleatoriamente por los caracteres ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'). Genera un id unico para cada instancia del componente, esto se usará para saber con que instancias/datos manejar dentro de los metodos del componente.|
+|#_ idGenerator():| Retorna un id de 10 caracteres de longitud compuesto aleatoriamente por los caracteres ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'). Genera un id unico para cada instancia del componente, esto se usará para saber con que instancias/datos manejar dentro de los metodos del componente.|
+|#_getStyles():| Retorna String con los estilos para el componente. Aquí se debe crear todo lo relacionado con estilos dinamicos, condiciones etc.|
+|#_getTemplate():| Retorna String con todo el html del componente. Este debe contener a su vez en una etiqueta <style></style>|
 
-Genera y retorna un ID aleatorio utilizado para identificar componentes y opciones.
-#_getStyles():
-
-Devuelve una cadena de texto que representa los estilos CSS del componente.
-#_getTemplate():
 
 Devuelve una cadena de texto que representa el contenido del componente y sus elementos HTML.
 #_removeAllEvents():

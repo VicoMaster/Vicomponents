@@ -1,6 +1,6 @@
 /**
  * Autor: Andres Rivera (github.com/VicoMaster)
- * Description: Plantilla base(ejemplo) para crear cualquier componente usando estandar Web Components
+ * Description: Plantilla base(ejemplo) para crear cualquier componente usando estándar Web Components
  */
 class ComponentBase extends HTMLElement {
     constructor() {
@@ -127,7 +127,7 @@ class ComponentBase extends HTMLElement {
         if (!this._loading) {
             loading = '';
         }
-        // Validaciones para la creacion del template 
+        // Validaciones para la creación del template 
         let formatData = undefined;
         let containDropdown = undefined;
         if (this._data !== undefined && this._data !== null) {
