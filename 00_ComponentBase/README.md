@@ -12,8 +12,7 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 |set data(newData):|Modifica el atributo "data" del componente. Con esta actualización se activa el metodo attributeChangedCallback()|
 |set mode(newMode):|Modifica el atributo "mode" del componente. Con esta actualización se activa el metodo attributeChangedCallback()|
 |attributeChangedCallback(attrName, oldVal, newVal):|Cada vez que se actualice alguno de los atributos en seguimiento se ejecuta este metodo|
-
-|#_idGenerator():| Retorna un id de 10 caracteres de longitud compuesto aleatoriamente por los caracteres ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'). Genera un id unico para cada instancia del componente, esto se usará para saber con que instancias/datos manejar dentro de los metodos del componente.|
+|idGenerator():| Retorna un id de 10 caracteres de longitud compuesto aleatoriamente por los caracteres ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'). Genera un id unico para cada instancia del componente, esto se usará para saber con que instancias/datos manejar dentro de los metodos del componente.|
 
 Genera y retorna un ID aleatorio utilizado para identificar componentes y opciones.
 #_getStyles():
