@@ -5,6 +5,7 @@
 class ComponentBase extends HTMLElement {
     constructor() {
         super();
+        this._idComponentBase = '';
         this._loading = true;
         this._mode = 'loading';
         this._options = [];
@@ -21,8 +22,8 @@ class ComponentBase extends HTMLElement {
     get mode() {
         return this._mode;
     }
-    get selectedOptions() {
-        return this._options;
+    get id() {
+        return this._idComponentBase;
     }
     set data(newData) {
         this.setAttribute('data', JSON.stringify(newData));
