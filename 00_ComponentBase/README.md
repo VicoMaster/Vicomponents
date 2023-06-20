@@ -14,25 +14,9 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 |attributeChangedCallback(attrName, oldVal, newVal):|Cada vez que se actualice alguno de los atributos en seguimiento se ejecuta este metodo|
 |#_ idGenerator():| Retorna un id de 10 caracteres de longitud compuesto aleatoriamente por los caracteres ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'). Genera un id unico para cada instancia del componente, esto se usará para saber con que instancias/datos manejar dentro de los metodos del componente.|
 |#_getStyles():| Retorna String con los estilos para el componente. Aquí se debe crear todo lo relacionado con estilos dinamicos, condiciones etc.|
-|#_getTemplate():| Retorna String con todo el html del componente. Este debe contener a su vez en una etiqueta <style></style>|
-
-
-Devuelve una cadena de texto que representa el contenido del componente y sus elementos HTML.
-#_removeAllEvents():
-
-Elimina todos los eventos y datos asociados a eventos del componente.
-disconnectedCallback():
-
-Se llama cuando el componente se desconecta del DOM.
-Realiza acciones de limpieza y sugiere eliminar la instancia del componente.
-#_addEvents():
-
-Agrega todos los eventos necesarios para el componente y guarda los datos de los eventos en componentBaseInstances.
-#_render():
-
-Renderiza el componente cuando se modifica alguna propiedad.
-Actualiza el contenido del shadow DOM y agrega eventos.
-connectedCallback():
-
-Se llama cuando el componente se conecta al DOM.
-Realiza acciones de inicialización, renderizado y agrega eventos.
+|#_getTemplate():| Retorna String con todo el html del componente. Este debe contener a su vez en una etiqueta <style></style> con todos los estilos del componente antes que todo el contenido del html del mismo.|
+|#_removeAllEvents():|Elimina todos los eventos y datos asociados a eventos del componente. Controlamos la limpieza de la memoria y datos por instancias|
+|disconnectedCallback():|Realiza acciones de limpieza y sugiere eliminar/blanquear la instancia del componente.|
+|#_addEvents():|Agrega todos los eventos necesarios para el componente y guarda los datos de los eventos en componentBaseInstances.|
+|#_render():|Renderiza el componente cuando se modifica alguna propiedad. Actualiza el contenido del shadow DOM y agrega eventos.|
+|connectedCallback():|Se llama cuando el componente se conecta al DOM. Realiza acciones de inicialización, renderizado y agrega eventos.|
