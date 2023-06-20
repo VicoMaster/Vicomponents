@@ -1,4 +1,6 @@
 # Component Base | Componente Base
+![Base Component](http://drive.google.com/uc?export=view&id=1rX6JnVceCoGCadUA84FP8Ywzacd8y90f)
+
 A continuación se especifican los metodos (funciones) que se usan en la plantilla de un ComponentBase usando estandares WebComponents. Las unicas funciones obligatorias son [connectedCallback(),AttributeChangedCallback(), disconectedCallback()] por ser parte del ciclo de vida del WebComponent. El resto de funciones son opcionales, se pueden crear más a necesidad o eliminarse. 
 
 >*Nota:* Las funciones detalladas a continuación son las aconsejadas para implementar correctamente un webcomponent con correcto manejo de instancia y desarrollo escalable, se recomienda desarrollar el componente dejando las funciones listadas a continuación.
