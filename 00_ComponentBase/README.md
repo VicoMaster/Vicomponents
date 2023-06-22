@@ -2,7 +2,12 @@
 
 
 El siguiente componente crea un elemento "p" con algunos metodos de utilidad para crear un webComponent con un código que ya tiene un control de instancias y limpieza de memoria. Para crear un componente personalizado remplace el html y estilos necesarios, cree la lógica correspondiente usando los metodos de la plantilla y agregue o modifique a gusto cualquier parte del código.
+
+
 ![Base Component](http://drive.google.com/uc?export=view&id=1qOm2xrXlGVMjm5RMqw76Pcfqi5e-ElcL)
+
+
+## Metodos
 
 A continuación se especifican los metodos (funciones) que se usan en la plantilla de un ComponentBase usando estandares WebComponents. Las unicas funciones obligatorias son [connectedCallback(),AttributeChangedCallback(), disconectedCallback()] por ser parte del ciclo de vida del WebComponent. El resto de funciones son opcionales, se pueden crear más a necesidad o eliminarse. 
 
