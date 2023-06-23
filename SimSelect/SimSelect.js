@@ -148,9 +148,8 @@ class SimSelect extends HTMLElement {
             if (attrName === 'data') {
                 if (JSON.parse(newVal) !== '') {
                     if (typeof (JSON.parse(newVal)) === 'object') {
+                        // Se valida el formato de la data ingresada
                         if ((JSON.parse(newVal)[0].group || JSON.parse(newVal)[0].option) && JSON.parse(newVal)[0].value) {
-                            // Falta validar cuando se ingresa una data para grupos pero no tiene options.
-                            // No se hace esta validación por ser muy [Obvio]
                             this._data = JSON.parse(newVal);
                             this._loading = false;
                             this._mode = 'data';
@@ -891,6 +890,12 @@ class SimSelect extends HTMLElement {
         console.log('DISCONNECTED');
         this.#_removeAllEvents();
         this.onclick = null;
+        // Ubicamos la instance correspondiente a this
+        const INSTANCE_SIMSELECT = simselectInstances.filter(instance => {
+            if (instance.id === this._idSimSelect) {
+                return instance;
+            }
+        });
         INSTANCE_SIMSELECT[0].simselect = null;
         INSTANCE_SIMSELECT[0].id = null;
         simselectInstances.splice(simselectInstances.indexOf(INSTANCE_SIMSELECT[0]), 1);

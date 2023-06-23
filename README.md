@@ -6,7 +6,6 @@
 |---|---|---|
 |**00_ComponentBase**|Implementación en JavaScript para empezar a construir un WebComponent|Versión sin CSS|
 |**SimSelect**|Un select aesthetic con filtro y generador de grupos|En desarrollo...|
-|**chartUI**|Generador de gráficos de barras y lineas con filtros tipo select|Versión sin estándar WebComponent|
 
 
 Componentes reutilizables usando la API <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> creada por el equipo de desarrolladores de Google, liderado por Alex Russell y Dimitri Glazkov.
@@ -35,13 +34,13 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
     Se debe extender de la clase (HTMLElement) para poder utilizar los metodos de su ciclo de vida.
     ```javascript
     class componenteBase extends HTMLElement {
-    constructor() {
-        super();
-        this.data = '';
-        this.instanceComponent = undefined;
-        // Inicializamos el modo shadowDOM
-        this.attachShadow({ mode: "open" });
-    }
+        constructor() {
+            super();
+            this.data = '';
+            this.instanceComponent = undefined;
+            // Inicializamos el modo shadowDOM
+            this.attachShadow({ mode: "open" });
+        }
     ...
     }
     ```
