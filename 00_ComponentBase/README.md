@@ -46,7 +46,7 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 
 
 ## Simple Implementation - ENGLISH
-> **Nota:** Con esta plantilla base podras crear un webcomponent de forma más rapida sin preocuparte por como implementar la API. Intenta crear tu componente con los metodos listados más abajo.With this base template, you will be able to create a web component more quickly without worrying about how to implement the API. Try creating your component using the methods described below.
+> **Nota:** With this base template, you will be able to create a web component more quickly without worrying about how to implement the API. Try creating your component using the methods described below.
 
 
 To implement the base component, simply create the element in the HTML and call the script of the class.
