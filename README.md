@@ -32,7 +32,7 @@ contructor() -> connectedCallback() ->  AttributeChangedCallback()    || Casos r
 -----------------------------------------------------------------------------------------------------------
 
 ```
-El ciclo de vida de un componente está 100% ligado al DOM ya que son estándares del navegador y son parte fundamental del critical renderig path. Para que todo el código [html,css y js] esté encapsulado se usa **(this.attachShadow({ mode: "open" });)**
+El ciclo de vida de un componente está 100% ligado al DOM ya que son estándares del navegador y son parte fundamental del critical renderig path. Para que todo el código [html,css y js] esté encapsulado se usa `(this.attachShadow({ mode: "open" });)`
 
 ---
 * Constructor():
@@ -180,7 +180,7 @@ contructor() -> connectedCallback() ->  AttributeChangedCallback()    || Unusual
 -----------------------------------------------------------------------------------------------------------
 
 ```
-The lifecycle of a component is 100% tied to the DOM as it is a standard feature of the browser and an essential part of the critical rendering path. To encapsulate all the code [HTML, CSS, and JS] the method is used. **(this.attachShadow({ mode: "open" });)**
+The lifecycle of a component is 100% tied to the DOM as it is a standard feature of the browser and an essential part of the critical rendering path. To encapsulate all the code [HTML, CSS, and JS] the method is used. `(this.attachShadow({ mode: "open" });)`
 
 ---
 * Constructor():
