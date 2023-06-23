@@ -1,4 +1,9 @@
-# Vicomponents - Componentes Personalizados
+# Vicomponents
+* [ENGLISH](#custom-components---english) 
+* [ESPAÑOL](#componentes-personalizados---español) 
+
+
+## Componentes Personalizados - ESPAÑOL
 > **TIP:** Usa el componente **00_ComponentBase** para crear un WebComponent de forma más rápida.
 
 
@@ -140,3 +145,8 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
       `;
     }
     ```
+
+
+## Custom Components - English
+
+Hi Docs in English
