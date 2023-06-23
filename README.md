@@ -3,7 +3,7 @@
 
 
 |Component|Description|Version|Comments|
-|---|---|---|
+|---|---|---|---|
 |**00_ComponentBase**|Implementación en JavaScript para empezar a construir un WebComponent|v.1.0|Plantilla base para crear components|
 |**SimSelect**|Un select aesthetic con filtro y generador de grupos|V.1.0|Operativo. Contiene data de prueba para modo grupo y options|
 
