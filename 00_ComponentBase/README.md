@@ -1,9 +1,9 @@
 # Base Component | Componente Base
 
-* [Simple Implementation - ENGLISH](#sectionEnglish) 
-* [Implementación Simple - ESPAÑOL](#sectionSpanish) 
+* [Simple Implementation - ENGLISH](#simple-implementation---english) 
+* [Implementación Simple - ESPAÑOL](#implementación-simple---español) 
 
-## <a id="sectionSpanish">Implementación Simple - ESPAÑOL</a>
+## Implementación Simple - ESPAÑOL
 El siguiente componente crea un elemento "p" con algunos metodos de utilidad para crear un webComponent con un código que ya tiene un control de instancias y limpieza de memoria. Para crear un componente personalizado remplace el html y estilos necesarios, cree la lógica correspondiente usando los metodos de la plantilla y agregue o modifique a gusto cualquier parte del código.
 
 
@@ -35,7 +35,7 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 |connectedCallback():|[Obligatorio] Se llama cuando el componente se conecta al DOM. Realiza acciones de inicialización, renderizado y agrega eventos.|
 
 
-## <a id="sectionEnglish">Simple Implementation - ENGLISH</a>
+## Simple Implementation - ENGLISH
 
 
 The following component creates a "p" element with some utility methods for creating a web component that already has instance control and memory cleanup. To create a custom component, replace the necessary HTML and styles, create the corresponding logic using the template methods, and add or modify any part of the code as desired.
