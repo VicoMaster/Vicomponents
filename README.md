@@ -91,19 +91,19 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 * getStyles() **NO HACE PARTE DE LA API**:
 
 
-    Metodo para construir el css.
+    Metodo para construir el css. Las siguientes pseudo-clases se usan para agregar estilos directamente al componente directamente dentro del shadow-dom. **Para saber más sobre ShadowDOM:** [MDN: ShadowDOM](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_shadow_DOM)
 
     
-    :host se usa para meter estilos generales al componente
+    :host se usa para agregar estilos generales al componente
 
 
-    :host(.blue) para meter estilos especificos al componente cuando contiene la clase .blue
+    :host(.blue) para agregar estilos especificos al componente cuando contiene la clase .blue
 
 
-    :host([yellow]) para meter estilo especificos cuando el componente tiene el atributo yellow
+    :host([yellow]) para agregar estilo especificos cuando el componente tiene el atributo yellow
 
 
-    :host-context(article.card) para meter estilos en el componente cuando está contenido en un article con clase .card [NO USAR]
+    :host-context(article.card) para agregar estilos en el componente cuando está contenido en un article con clase .card [NO USAR]
     ```javascript
         getStyles() {
         return `
