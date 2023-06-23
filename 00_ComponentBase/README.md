@@ -4,6 +4,14 @@
 * [Implementación Simple - ESPAÑOL](#implementación-simple---español) 
 
 ## Implementación Simple - ESPAÑOL
+
+Para implementar el componente base solo cree el elemento en el html y llame el script de la clase.
+
+```html
+    <component-base id="component1"></component-base>
+    <script src="componentBase.js"></script>
+```
+
 El siguiente componente crea un elemento "p" con algunos metodos de utilidad para crear un webComponent con un código que ya tiene un control de instancias y limpieza de memoria. Para crear un componente personalizado remplace el html y estilos necesarios, cree la lógica correspondiente usando los metodos de la plantilla y agregue o modifique a gusto cualquier parte del código.
 
 
@@ -37,6 +45,12 @@ A continuación se especifican los metodos (funciones) que se usan en la plantil
 
 ## Simple Implementation - ENGLISH
 
+To implement the base component, simply create the element in the HTML and call the script of the class.
+
+```html
+    <component-base id="component1"></component-base>
+    <script src="componentBase.js"></script>
+```
 
 The following component creates a "p" element with some utility methods for creating a web component that already has instance control and memory cleanup. To create a custom component, replace the necessary HTML and styles, create the corresponding logic using the template methods, and add or modify any part of the code as desired.
 
