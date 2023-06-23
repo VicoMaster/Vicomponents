@@ -1,5 +1,5 @@
 # Vicomponents - Componentes Personalizados
-> **TIP:** Usa el componente **TemplateComponent** para crear un WebComponent de forma más rápida.
+> **TIP:** Usa el componente **00_ComponentBase** para crear un WebComponent de forma más rápida.
 
 
 |Component|Description|Version|Comments|
