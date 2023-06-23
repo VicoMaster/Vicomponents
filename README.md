@@ -6,6 +6,8 @@
 ## Componentes Personalizados - ESPAÑOL
 > **TIP:** Usa el componente **00_ComponentBase** para crear un WebComponent de forma más rápida.
 
+Los siguientes componentes usan la API de Web Components para crear componentes simples, reutilizables y ligeros. Se pueden implementar en cualquier Framework o tecnología que use html y javascript.
+
 
 |Component|Description|Version|Comments|
 |---|---|---|---|
@@ -149,4 +151,144 @@ El ciclo de vida de un componente está 100% ligado al DOM ya que son estándare
 
 ## Custom Components - English
 
-Hi Docs in English
+> **TIP:** Use the 00_ComponentBase component to create a web component more quickly.
+
+The following components use the Web Components API to create simple, reusable, and lightweight components. They can be implemented in any framework or technology that uses HTML and JavaScript.
+
+
+|Component|Description|Version|Comments|
+|---|---|---|---|
+|**00_ComponentBase**|JavaScript Implementation to start building a Web Component.|v.1.0|Base template for creating components.|
+|**SimSelect**|An aesthetic select with filter and group generator.|V.1.0|Operational. It contains sample data for group mode and options.|
+
+
+Reusable components using the API. <a href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a> Created by the team of developers at Google, led by Alex Russell and Dimitri Glazkov.
+
+
+Currently, it is supported by all browsers and aims to create reusable components that are consistent and allow for reactivity without any specific framework or library. All you need to know is its lifecycle and have knowledge of HTML, CSS, and JavaScript. By using Web Components, you can implement them in any project, regardless of the framework or library being used, as this architecture encapsulates all the code, styles, and structure within the Shadow DOM.
+
+
+**In the following link, you can download reusable components designed by the community:**
+<a href="https://www.webcomponents.org/" target="_blank">COMPONENTS</a>
+
+
+## LIFECYCLE OF A WEB COMPONENT
+```
+-----------------------------------------------------------------------------------------------------------
+contructor() -> connectedCallback() ->  AttributeChangedCallback()    || Unusual Cases: AdoptedCallbac()
+                                    |-> disconectedCallback()
+-----------------------------------------------------------------------------------------------------------
+
+```
+The lifecycle of a component is 100% tied to the DOM as it is a standard feature of the browser and an essential part of the critical rendering path. To encapsulate all the code [HTML, CSS, and JS] the method is used. **(this.attachShadow({ mode: "open" });)**
+
+---
+* Constructor():
+
+
+    To utilize the lifecycle methods, the component must extend the (HTMLElement) class.
+    ```javascript
+    class componenteBase extends HTMLElement {
+        constructor() {
+            super();
+            this.data = '';
+            this.instanceComponent = undefined;
+            // We initialize the shadow DOM mode.
+            this.attachShadow({ mode: "open" });
+        }
+    ...
+    }
+    ```
+**To learn more about Shadow DOM:** [MDN: ShadowDOM](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_shadow_DOM)
+
+---
+* Connected Callback():
+
+
+    Once the component is part of the DOM, we can use this method to implement specific logic.
+    ```javascript
+    connectedCallback() {
+        if (this.data === '') {
+            // If the element does not contain any parameters, it is still rendered in the same way.
+            this.render();
+        }
+    }
+    ```
+---
+* Disconected Callback():
+
+
+    When we remove an element, we are disconnecting it from the DOM. This is important because when we delete these elements, they may have certain functionality that also needs to be disconnected to free up memory.To properly remove the component, it's recommended to remove each child node within the parent element before deleting the component using the `.remove()` method.
+---
+* AttributeChangedCallback():
+
+
+    This is the way we observe the attributes of our component. If there are any changes in the attributes, it will notify us so that we can make appropriate changes within the component.
+
+    ```javascript
+    // If there are changes in the attributes, this method is triggered.
+    attributeChangedCallback(attrName, oldVal, newVal) {
+        if (oldVal !== newVal) {
+            if (attrName === "data") {
+                this.data = newVal;
+                this.render();
+            }
+        }
+    }
+    ```
+---
+* AdoptedCallback()
+
+
+    It is triggered when a component is used within an iframe, for example. However, it is considered a bad practice due to performance implications and a poor user experience.
+---
+* getStyles() **IT'S NOT PART OF THE API.**:
+
+
+    Method for constructing CSS. The following pseudo-classes are used to add styles directly to the component within the shadow DOM. **To learn more about Shadow DOM:** [MDN: ShadowDOM](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_shadow_DOM)
+
+    
+    :host is used to add general styles to the component.
+
+    :host(.blue) is used to add specific styles to the component when it contains the class .blue.
+
+    :host([yellow]) is used to add specific styles when the component has the yellow attribute.
+
+    :host-context(article.card) is used to add styles to the component when it is contained within an article with the class .card [DO NOT USE].
+
+    ```javascript
+        getStyles() {
+        return `
+        <style>
+        :host {
+            display: inline-block;
+            width: 100%;
+            min-width: 300px;
+            max-width: 450px;
+            font-size: 20px;
+            background: grey;
+        }
+        :host(.blue) {
+            background: blue; 
+        }
+        :host([yellow]) {
+            background: yellow;
+        }
+        :host([yellow]) h1{
+            color: grey;
+        }
+        :host([yellow]) p {
+            color: red;
+        }
+        :host-context(article.card) {
+            display: block;
+            max-width: 100%;
+        }
+
+        .normalClass {
+            /* USUALLY CSS */
+        }
+        </style>
+      `;
+    }
+    ```
