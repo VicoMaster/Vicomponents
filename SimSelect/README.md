@@ -24,7 +24,7 @@ Cada uno de los siguientes metodos hacen parte fundamental del funcionamiento de
 
 |Metodo|Description|Comments|
 |---|---|---|
-|constructor()| | |
+|constructor()| Se declaran cada una de las variables que interoperan con los metodos de la clase. Aquí se declaran cada uno de los estados del componente, colores, tamaños, iconos, data de prueba, etc...  | Si se desea iniciar algún valor por defecto, se debe especificar aquí.|
 |static get observedAttributes()| | |
 |get dataExample() | | |
 |get dataExampleOptions() | | |
