@@ -14,7 +14,7 @@ Para implementar el componente base solo cree el elemento en el html y llame el 
     <script src="componentBase.js"></script>
 ```
 
-El siguiente componente crea un elemento "p" con algunos metodos de utilidad para crear un webComponent con un código que ya tiene un control de instancias y limpieza de memoria. Para crear un componente personalizado remplace el html y estilos necesarios, cree la lógica correspondiente usando los metodos de la plantilla y agregue o modifique a gusto cualquier parte del código.
+El siguiente componente crea un elemento "p" con algunos metodos de utilidad con un control de instancias y limpieza de memoria. Para crear un componente personalizado remplace el html y estilos necesarios, cree la lógica correspondiente usando los metodos de la plantilla y agregue o modifique a gusto cualquier parte del código.
 
 
 ![Base Component](http://drive.google.com/uc?export=view&id=1qOm2xrXlGVMjm5RMqw76Pcfqi5e-ElcL)
