@@ -1,7 +1,7 @@
 # Vicomponents - SimSelect
 > Un simple select Aesthetic con caja de busqueda, filtro y generador de grupos (opcional).
 
-*NOTA:* Actualmente esta versión de componente no maneja una correcta creación de `sim-select` luego de la primera carga de la clase. Para siguientes versiones se implementará carga en caliente.
+*NOTA:* Actualmente esta versión de componente no maneja una ```carga en caliente```. En las siguientes versiones se implementará esta necesidad.
 
 
 ## Simple Implementación
