@@ -1,9 +1,6 @@
 # Vicomponents - SimSelect
 > Un simple select Aesthetic con caja de busqueda, filtro y generador de grupos (opcional).
 
-*NOTA:* Actualmente esta versión de componente no maneja una ```carga en caliente```. En las siguientes versiones se implementará esta necesidad.
-
-
 ## Simple Implementación
 Es tan simple como crear una etiqueta vacia en el html <sim-select></sim-select> y luego llamar el script SimSelect.js
 ```html
