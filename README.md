@@ -4,7 +4,7 @@
 
 
 ## Componentes Personalizados - ESPAÑOL
-> **TIP:** Usa el componente **00_ComponentBase** para crear un WebComponent de forma más rápida.
+> **TIP:** Usa el componente - **00_ComponentBase** para crear un WebComponent de forma más rápida.
 
 Los siguientes componentes usan la API de Web Components para crear componentes simples, reutilizables y ligeros. Se pueden implementar en cualquier Framework o tecnología que use html y javascript.
 
